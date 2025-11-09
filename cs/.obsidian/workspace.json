@@ -1,0 +1,204 @@
+{
+  "main": {
+    "id": "2fda61b6200b7318",
+    "type": "split",
+    "children": [
+      {
+        "id": "8a34094b4257b8c3",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "eb6de92ff8eb1a95",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "xv6/xv6笔记：Lab Utilities.md",
+                "mode": "source",
+                "source": true,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "xv6笔记：Lab Utilities"
+            }
+          }
+        ]
+      },
+      {
+        "id": "3a861cf0ac7d4001",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c018d9bcd44c0865",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "xv6/xv6笔记：Lab Utilities.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "xv6笔记：Lab Utilities"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "20a97705ff2c71e1",
+    "type": "split",
+    "children": [
+      {
+        "id": "499df27df4c83f06",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a8449e5a65d1498a",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "cd9bd132494ed154",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "06a20e78cb2ae2f7",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 319.5
+  },
+  "right": {
+    "id": "ed3e0dedca036b72",
+    "type": "split",
+    "children": [
+      {
+        "id": "ac5107a0f1d4cd23",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a5be849911751418",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "xv6/xv6笔记：Lab Utilities.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for xv6笔记：Lab Utilities"
+            }
+          },
+          {
+            "id": "be035ad071dd6b3d",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "xv6/xv6笔记1：.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from xv6笔记1："
+            }
+          },
+          {
+            "id": "a01fd74946d7fbcd",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "433523063a473ccc",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "xv6/xv6笔记1：.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of xv6笔记1："
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "eb6de92ff8eb1a95",
+  "lastOpenFiles": [
+    "Untitled.md",
+    "xv6/xv6笔记：Lab Utilities.md",
+    "Welcome.md",
+    "Untitled",
+    "kernel",
+    "archlinux",
+    "xv6"
+  ]
+}
