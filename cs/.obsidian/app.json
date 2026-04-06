@@ -1,4 +1,6 @@
 {
   "promptDelete": false,
-  "readableLineLength": true
+  "readableLineLength": true,
+  "livePreview": true,
+  "showLineNumber": true
 }

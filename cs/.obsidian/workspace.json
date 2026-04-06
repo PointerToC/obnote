@@ -4,22 +4,41 @@
     "type": "split",
     "children": [
       {
-        "id": "780baef38e6c4710",
+        "id": "4deb9e1e98d31ba2",
         "type": "tabs",
         "children": [
           {
-            "id": "93d0c0f1404fd092",
+            "id": "e730982153d64e7b",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "xv6/xv6笔记：Lab Utilities.md",
-                "mode": "preview",
-                "source": false,
-                "backlinks": false
+                "file": "drm/drm.md",
+                "mode": "source",
+                "source": true
               },
               "icon": "lucide-file",
-              "title": "xv6笔记：Lab Utilities"
+              "title": "drm"
+            }
+          }
+        ]
+      },
+      {
+        "id": "5ed4607872024cac",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d97ba90500bc5108",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "drm/drm.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "drm"
             }
           }
         ]
@@ -114,12 +133,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "xv6/xv6笔记1：.md",
+                "file": "drm/drm.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from xv6笔记1："
+              "title": "Outgoing links from drm"
             }
           },
           {
@@ -143,16 +162,17 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "xv6/xv6笔记1：.md",
+                "file": "drm/drm_framebuffer.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of xv6笔记1："
+              "title": "Outline of drm_framebuffer"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -170,16 +190,24 @@
       "bases:Create new base": false
     }
   },
-  "active": "93d0c0f1404fd092",
+  "active": "e730982153d64e7b",
   "lastOpenFiles": [
-    "xv6/pic/fs_img_layout.png",
+    "drm/cursor_layer.txt",
+    "pic.md",
+    "drm/drm.md",
+    "drm/pic/gem_alloc.png",
+    "drm/crtc.md",
+    "drm/pic",
+    "drm/gem_alloc.png.crswap",
+    "Pasted image 20260406151327.png",
+    "Untitled.md",
     "xv6/xv6笔记：Lab Utilities.md",
+    "drm",
+    "xv6/pic/fs_img_layout.png",
     "xv6/pic/lab_utilities",
     "xv6/pic",
     "xv6/fs_img_layout.png",
-    "Untitled.md",
     "Welcome.md",
-    "Untitled",
     "kernel",
     "archlinux",
     "xv6"

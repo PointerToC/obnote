@@ -1,0 +1,783 @@
+[root@archlinux 1]# cat /sys/kernel/debug/dri/1/state
+colorop[48]:
+        type=1D Curve
+        bypass=1
+        curve_1d_type=sRGB EOTF
+        next=53
+colorop[53]:
+        type=Multiplier
+        bypass=1
+        multiplier=0
+        next=58
+colorop[58]:
+        type=3x4 Matrix
+        bypass=1
+        data blob id=0
+        next=63
+colorop[63]:
+        type=1D Curve
+        bypass=1
+        curve_1d_type=sRGB Inverse EOTF
+        next=68
+colorop[68]:
+        type=1D LUT
+        bypass=1
+        size=4096
+        interpolation=Linear
+        data blob id=0
+        next=75
+colorop[75]:
+        type=3D LUT
+        bypass=1
+        size=17
+        interpolation=Tetrahedral
+        data blob id=0
+        next=82
+colorop[82]:
+        type=1D Curve
+        bypass=1
+        curve_1d_type=sRGB EOTF
+        next=87
+colorop[87]:
+        type=1D LUT
+        bypass=1
+        size=4096
+        interpolation=Linear
+        data blob id=0
+        next=0
+colorop[101]:
+        type=1D Curve
+        bypass=1
+        curve_1d_type=sRGB EOTF
+        next=106
+colorop[106]:
+        type=Multiplier
+        bypass=1
+        multiplier=0
+        next=111
+colorop[111]:
+        type=3x4 Matrix
+        bypass=1
+        data blob id=0
+        next=116
+colorop[116]:
+        type=1D Curve
+        bypass=1
+        curve_1d_type=sRGB Inverse EOTF
+        next=121
+colorop[121]:
+        type=1D LUT
+        bypass=1
+        size=4096
+        interpolation=Linear
+        data blob id=0
+        next=128
+colorop[128]:
+        type=3D LUT
+        bypass=1
+        size=17
+        interpolation=Tetrahedral
+        data blob id=0
+        next=135
+colorop[135]:
+        type=1D Curve
+        bypass=1
+        curve_1d_type=sRGB EOTF
+        next=140
+colorop[140]:
+        type=1D LUT
+        bypass=1
+        size=4096
+        interpolation=Linear
+        data blob id=0
+        next=0
+colorop[154]:
+        type=1D Curve
+        bypass=1
+        curve_1d_type=sRGB EOTF
+        next=159
+colorop[159]:
+        type=Multiplier
+        bypass=1
+        multiplier=0
+        next=164
+colorop[164]:
+        type=3x4 Matrix
+        bypass=1
+        data blob id=0
+        next=169
+colorop[169]:
+        type=1D Curve
+        bypass=1
+        curve_1d_type=sRGB Inverse EOTF
+        next=174
+colorop[174]:
+        type=1D LUT
+        bypass=1
+        size=4096
+        interpolation=Linear
+        data blob id=0
+        next=181
+colorop[181]:
+        type=3D LUT
+        bypass=1
+        size=17
+        interpolation=Tetrahedral
+        data blob id=0
+        next=188
+colorop[188]:
+        type=1D Curve
+        bypass=1
+        curve_1d_type=sRGB EOTF
+        next=193
+colorop[193]:
+        type=1D LUT
+        bypass=1
+        size=4096
+        interpolation=Linear
+        data blob id=0
+        next=0
+colorop[207]:
+        type=1D Curve
+        bypass=1
+        curve_1d_type=sRGB EOTF
+        next=212
+colorop[212]:
+        type=Multiplier
+        bypass=1
+        multiplier=0
+        next=217
+colorop[217]:
+        type=3x4 Matrix
+        bypass=1
+        data blob id=0
+        next=222
+colorop[222]:
+        type=1D Curve
+        bypass=1
+        curve_1d_type=sRGB Inverse EOTF
+        next=227
+colorop[227]:
+        type=1D LUT
+        bypass=1
+        size=4096
+        interpolation=Linear
+        data blob id=0
+        next=234
+colorop[234]:
+        type=3D LUT
+        bypass=1
+        size=17
+        interpolation=Tetrahedral
+        data blob id=0
+        next=241
+colorop[241]:
+        type=1D Curve
+        bypass=1
+        curve_1d_type=sRGB EOTF
+        next=246
+colorop[246]:
+        type=1D LUT
+        bypass=1
+        size=4096
+        interpolation=Linear
+        data blob id=0
+        next=0
+colorop[260]:
+        type=1D Curve
+        bypass=1
+        curve_1d_type=sRGB EOTF
+        next=265
+colorop[265]:
+        type=Multiplier
+        bypass=1
+        multiplier=0
+        next=270
+colorop[270]:
+        type=3x4 Matrix
+        bypass=1
+        data blob id=0
+        next=275
+colorop[275]:
+        type=1D Curve
+        bypass=1
+        curve_1d_type=sRGB Inverse EOTF
+        next=280
+colorop[280]:
+        type=1D LUT
+        bypass=1
+        size=4096
+        interpolation=Linear
+        data blob id=0
+        next=287
+colorop[287]:
+        type=3D LUT
+        bypass=1
+        size=17
+        interpolation=Tetrahedral
+        data blob id=0
+        next=294
+colorop[294]:
+        type=1D Curve
+        bypass=1
+        curve_1d_type=sRGB EOTF
+        next=299
+colorop[299]:
+        type=1D LUT
+        bypass=1
+        size=4096
+        interpolation=Linear
+        data blob id=0
+        next=0
+colorop[313]:
+        type=1D Curve
+        bypass=1
+        curve_1d_type=sRGB EOTF
+        next=318
+colorop[318]:
+        type=Multiplier
+        bypass=1
+        multiplier=0
+        next=323
+colorop[323]:
+        type=3x4 Matrix
+        bypass=1
+        data blob id=0
+        next=328
+colorop[328]:
+        type=1D Curve
+        bypass=1
+        curve_1d_type=sRGB Inverse EOTF
+        next=333
+colorop[333]:
+        type=1D LUT
+        bypass=1
+        size=4096
+        interpolation=Linear
+        data blob id=0
+        next=340
+colorop[340]:
+        type=3D LUT
+        bypass=1
+        size=17
+        interpolation=Tetrahedral
+        data blob id=0
+        next=347
+colorop[347]:
+        type=1D Curve
+        bypass=1
+        curve_1d_type=sRGB EOTF
+        next=352
+colorop[352]:
+        type=1D LUT
+        bypass=1
+        size=4096
+        interpolation=Linear
+        data blob id=0
+        next=0
+plane[42]: plane-0
+        crtc=(null)
+        fb=0
+        crtc-pos=0x0+0+0
+        src-pos=0.000000x0.000000+0.000000+0.000000
+        rotation=1
+        normalized-zpos=2
+        color-encoding=ITU-R BT.709 YCbCr
+        color-range=YCbCr limited range
+        color_mgmt_changed=0
+        color-pipeline=0
+plane[95]: plane-1
+        crtc=(null)
+        fb=0
+        crtc-pos=0x0+0+0
+        src-pos=0.000000x0.000000+0.000000+0.000000
+        rotation=1
+        normalized-zpos=2
+        color-encoding=ITU-R BT.709 YCbCr
+        color-range=YCbCr limited range
+        color_mgmt_changed=0
+        color-pipeline=0
+plane[148]: plane-2
+        crtc=(null)
+        fb=0
+        crtc-pos=0x0+0+0
+        src-pos=0.000000x0.000000+0.000000+0.000000
+        rotation=1
+        normalized-zpos=2
+        color-encoding=ITU-R BT.709 YCbCr
+        color-range=YCbCr limited range
+        color_mgmt_changed=0
+        color-pipeline=0
+plane[201]: plane-3
+        crtc=crtc-0
+        fb=429
+                allocated by = kwin_wayland
+                refcount=2
+                format=AR30 little-endian (0x30335241)
+                modifier=0x200000000401b03
+                size=3840x2160
+                layers:
+                        size[0]=3840x2160
+                        pitch[0]=15360
+                        offset[0]=0
+                        obj[0]:
+                                name=0
+                                refcount=4
+                                start=00109d4e
+                                size=33423360
+                                imported=no
+        crtc-pos=3840x2160+0+0
+        src-pos=3840.000000x2160.000000+0.000000+0.000000
+        rotation=1
+        normalized-zpos=0
+        color-encoding=ITU-R BT.709 YCbCr
+        color-range=YCbCr limited range
+        color_mgmt_changed=0
+        color-pipeline=0
+plane[254]: plane-4
+        crtc=(null)
+        fb=0
+        crtc-pos=0x0+0+0
+        src-pos=0.000000x0.000000+0.000000+0.000000
+        rotation=1
+        normalized-zpos=7
+        color-encoding=ITU-R BT.601 YCbCr
+        color-range=YCbCr limited range
+        color_mgmt_changed=0
+        color-pipeline=0
+plane[307]: plane-5
+        crtc=(null)
+        fb=0
+        crtc-pos=0x0+0+0
+        src-pos=0.000000x0.000000+0.000000+0.000000
+        rotation=1
+        normalized-zpos=8
+        color-encoding=ITU-R BT.601 YCbCr
+        color-range=YCbCr limited range
+        color_mgmt_changed=0
+        color-pipeline=0
+plane[360]: plane-6
+        crtc=crtc-0
+        fb=428
+                allocated by = kwin_wayland
+                refcount=2
+                format=AR24 little-endian (0x34325241)
+                modifier=0x0
+                size=256x256
+                layers:
+                        size[0]=256x256
+                        pitch[0]=1024
+                        offset[0]=0
+                        obj[0]:
+                                name=0
+                                refcount=4
+                                start=001419d6
+                                size=262144
+                                imported=no
+        crtc-pos=256x256+670+1908
+        src-pos=256.000000x256.000000+0.000000+0.000000
+        rotation=1
+        normalized-zpos=1
+        color-encoding=ITU-R BT.601 YCbCr
+        color-range=YCbCr limited range
+        color_mgmt_changed=0
+        color-pipeline=0
+plane[364]: plane-7
+        crtc=(null)
+        fb=0
+        crtc-pos=0x0+0+0
+        src-pos=0.000000x0.000000+0.000000+0.000000
+        rotation=1
+        normalized-zpos=ff
+        color-encoding=ITU-R BT.601 YCbCr
+        color-range=YCbCr limited range
+        color_mgmt_changed=0
+        color-pipeline=0
+plane[368]: plane-8
+        crtc=(null)
+        fb=0
+        crtc-pos=0x0+0+0
+        src-pos=0.000000x0.000000+0.000000+0.000000
+        rotation=1
+        normalized-zpos=ff
+        color-encoding=ITU-R BT.601 YCbCr
+        color-range=YCbCr limited range
+        color_mgmt_changed=0
+        color-pipeline=0
+plane[372]: plane-9
+        crtc=(null)
+        fb=0
+        crtc-pos=0x0+0+0
+        src-pos=0.000000x0.000000+0.000000+0.000000
+        rotation=1
+        normalized-zpos=ff
+        color-encoding=ITU-R BT.601 YCbCr
+        color-range=YCbCr limited range
+        color_mgmt_changed=0
+        color-pipeline=0
+crtc[363]: crtc-0
+        enable=1
+        active=1
+        self_refresh_active=0
+        planes_changed=1
+        mode_changed=0
+        active_changed=0
+        connectors_changed=0
+        color_mgmt_changed=0
+        plane_mask=48
+        connector_mask=2
+        encoder_mask=2
+        mode: "3840x2160": 60 533250 3840 3888 3920 4000 2160 2163 2168 2222 0x48 0x9
+crtc[367]: crtc-1
+        enable=0
+        active=0
+        self_refresh_active=0
+        planes_changed=0
+        mode_changed=0
+        active_changed=0
+        connectors_changed=0
+        color_mgmt_changed=0
+        plane_mask=0
+        connector_mask=0
+        encoder_mask=0
+        mode: "": 0 0 0 0 0 0 0 0 0 0 0x0 0x0
+crtc[371]: crtc-2
+        enable=0
+        active=0
+        self_refresh_active=0
+        planes_changed=0
+        mode_changed=0
+        active_changed=0
+        connectors_changed=0
+        color_mgmt_changed=0
+        plane_mask=0
+        connector_mask=0
+        encoder_mask=0
+        mode: "": 0 0 0 0 0 0 0 0 0 0 0x0 0x0
+crtc[375]: crtc-3
+        enable=0
+        active=0
+        self_refresh_active=0
+        planes_changed=0
+        mode_changed=0
+        active_changed=0
+        connectors_changed=0
+        color_mgmt_changed=0
+        plane_mask=0
+        connector_mask=0
+        encoder_mask=0
+        mode: "": 0 0 0 0 0 0 0 0 0 0 0x0 0x0
+connector[377]: HDMI-A-1
+        crtc=(null)
+        self_refresh_aware=0
+        interlace_allowed=0
+        ycbcr_420_allowed=1
+        max_requested_bpc=16
+        colorspace=Default
+        broadcast_rgb=Automatic
+        is_limited_range=n
+        output_bpc=0
+        output_format=RGB
+        tmds_char_rate=0
+connector[386]: DP-1
+        crtc=crtc-0
+        self_refresh_aware=0
+        interlace_allowed=0
+        ycbcr_420_allowed=1
+        max_requested_bpc=10
+        colorspace=Default
+connector[394]: DP-2
+        crtc=(null)
+        self_refresh_aware=0
+        interlace_allowed=0
+        ycbcr_420_allowed=1
+        max_requested_bpc=16
+        colorspace=Default
+connector[400]: DP-3
+        crtc=(null)
+        self_refresh_aware=0
+        interlace_allowed=0
+        ycbcr_420_allowed=1
+        max_requested_bpc=16
+        colorspace=Default
+connector[406]: Writeback-1
+        crtc=(null)
+        self_refresh_aware=0
+        interlace_allowed=0
+        ycbcr_420_allowed=0
+        max_requested_bpc=8
+        colorspace=Default
+[root@archlinux 1]# drm_info | grep -A 20 "Plane"
+drmModeGetPropertyBlob: No such file or directory
+drmModeGetPropertyBlob: No such file or directory
+drmModeGetPropertyBlob: No such file or directory
+drmModeGetPropertyBlob: No such file or directory
+drmModeGetPropertyBlob: No such file or directory
+└───Planes
+    ├───Plane 0
+    │   ├───Object ID: 42
+    │   ├───CRTCs: {3}
+    │   ├───Legacy info
+    │   │   ├───FB ID: 0
+    │   │   └───Formats:
+    │   │       ├───XRGB8888 (0x34325258)
+    │   │       ├───ARGB8888 (0x34325241)
+    │   │       ├───RGBA8888 (0x34324152)
+    │   │       ├───XRGB2101010 (0x30335258)
+    │   │       ├───XBGR2101010 (0x30334258)
+    │   │       ├───ARGB2101010 (0x30335241)
+    │   │       ├───ABGR2101010 (0x30334241)
+    │   │       ├───XRGB16161616 (0x38345258)
+    │   │       ├───XBGR16161616 (0x38344258)
+    │   │       ├───ARGB16161616 (0x38345241)
+    │   │       ├───ABGR16161616 (0x38344241)
+    │   │       ├───XBGR8888 (0x34324258)
+    │   │       ├───ABGR8888 (0x34324241)
+    │   │       ├───RGB565 (0x36314752)
+    │   │       ├───NV12 (0x3231564e)
+--
+    ├───Plane 1
+    │   ├───Object ID: 95
+    │   ├───CRTCs: {2}
+    │   ├───Legacy info
+    │   │   ├───FB ID: 0
+    │   │   └───Formats:
+    │   │       ├───XRGB8888 (0x34325258)
+    │   │       ├───ARGB8888 (0x34325241)
+    │   │       ├───RGBA8888 (0x34324152)
+    │   │       ├───XRGB2101010 (0x30335258)
+    │   │       ├───XBGR2101010 (0x30334258)
+    │   │       ├───ARGB2101010 (0x30335241)
+    │   │       ├───ABGR2101010 (0x30334241)
+    │   │       ├───XRGB16161616 (0x38345258)
+    │   │       ├───XBGR16161616 (0x38344258)
+    │   │       ├───ARGB16161616 (0x38345241)
+    │   │       ├───ABGR16161616 (0x38344241)
+    │   │       ├───XBGR8888 (0x34324258)
+    │   │       ├───ABGR8888 (0x34324241)
+    │   │       ├───RGB565 (0x36314752)
+    │   │       ├───NV12 (0x3231564e)
+--
+    ├───Plane 2
+    │   ├───Object ID: 148
+    │   ├───CRTCs: {1}
+    │   ├───Legacy info
+    │   │   ├───FB ID: 0
+    │   │   └───Formats:
+    │   │       ├───XRGB8888 (0x34325258)
+    │   │       ├───ARGB8888 (0x34325241)
+    │   │       ├───RGBA8888 (0x34324152)
+    │   │       ├───XRGB2101010 (0x30335258)
+    │   │       ├───XBGR2101010 (0x30334258)
+    │   │       ├───ARGB2101010 (0x30335241)
+    │   │       ├───ABGR2101010 (0x30334241)
+    │   │       ├───XRGB16161616 (0x38345258)
+    │   │       ├───XBGR16161616 (0x38344258)
+    │   │       ├───ARGB16161616 (0x38345241)
+    │   │       ├───ABGR16161616 (0x38344241)
+    │   │       ├───XBGR8888 (0x34324258)
+    │   │       ├───ABGR8888 (0x34324241)
+    │   │       ├───RGB565 (0x36314752)
+    │   │       ├───NV12 (0x3231564e)
+--
+    ├───Plane 3
+    │   ├───Object ID: 201
+    │   ├───CRTCs: {0}
+    │   ├───Legacy info
+    │   │   ├───FB ID: 429
+    │   │   │   ├───Object ID: 429
+    │   │   │   ├───Size: 3840×2160
+    │   │   │   ├───Format: ARGB2101010 (0x30335241)
+    │   │   │   ├───Modifier: AMD(TILE_VERSION = GFX10_RBPLUS, TILE = GFX9_64K_R_X, PIPE_XOR_BITS = 2, PACKERS = 0) (0x0200000000401b03)
+    │   │   │   └───Planes:
+    │   │   │       └───Plane 0: offset = 0, pitch = 15360 bytes
+    │   │   └───Formats:
+    │   │       ├───XRGB8888 (0x34325258)
+    │   │       ├───ARGB8888 (0x34325241)
+    │   │       ├───RGBA8888 (0x34324152)
+    │   │       ├───XRGB2101010 (0x30335258)
+    │   │       ├───XBGR2101010 (0x30334258)
+    │   │       ├───ARGB2101010 (0x30335241)
+    │   │       ├───ABGR2101010 (0x30334241)
+    │   │       ├───XRGB16161616 (0x38345258)
+    │   │       ├───XBGR16161616 (0x38344258)
+    │   │       ├───ARGB16161616 (0x38345241)
+    │   │       ├───ABGR16161616 (0x38344241)
+    │   │       ├───XBGR8888 (0x34324258)
+    │   │       ├───ABGR8888 (0x34324241)
+    │   │       ├───RGB565 (0x36314752)
+    │   │       ├───NV12 (0x3231564e)
+    │   │       ├───P010 (0x30313050)
+    │   │       ├───XRGB16161616F (0x48345258)
+    │   │       ├───ARGB16161616F (0x48345241)
+    │   │       ├───XBGR16161616F (0x48344258)
+--
+    │       │   └───Planes:
+    │       │       └───Plane 0: offset = 0, pitch = 15360 bytes
+    │       ├───"IN_FENCE_FD" (atomic): srange [-1, INT32_MAX] = -1
+    │       ├───"CRTC_ID" (atomic): object CRTC = 363
+    │       ├───"CRTC_X" (atomic): srange [INT32_MIN, INT32_MAX] = 0
+    │       ├───"CRTC_Y" (atomic): srange [INT32_MIN, INT32_MAX] = 0
+    │       ├───"CRTC_W" (atomic): range [0, INT32_MAX] = 3840
+    │       ├───"CRTC_H" (atomic): range [0, INT32_MAX] = 2160
+    │       ├───"SRC_X" (atomic): range [0, UINT32_MAX] = 0
+    │       ├───"SRC_Y" (atomic): range [0, UINT32_MAX] = 0
+    │       ├───"SRC_W" (atomic): range [0, UINT32_MAX] = 3840
+    │       ├───"SRC_H" (atomic): range [0, UINT32_MAX] = 2160
+    │       ├───"IN_FORMATS" (immutable): blob = 202
+    │       │   ├───AMD(TILE_VERSION = GFX10_RBPLUS, TILE = GFX9_64K_R_X, DCC, DCC_INDEPENDENT_64B, DCC_INDEPENDENT_128B, DCC_MAX_COMPRESSED_BLOCK = 64B, DCC_CONSTANT_ENCODE, PIPE_XOR_BITS = 2, PACKERS = 0) (0x0200000000533b03)
+    │       │   │   ├───XRGB8888 (0x34325258)
+    │       │   │   ├───ARGB8888 (0x34325241)
+    │       │   │   ├───RGBA8888 (0x34324152)
+    │       │   │   ├───XRGB2101010 (0x30335258)
+    │       │   │   ├───XBGR2101010 (0x30334258)
+    │       │   │   ├───ARGB2101010 (0x30335241)
+    │       │   │   ├───ABGR2101010 (0x30334241)
+    │       │   │   ├───XBGR8888 (0x34324258)
+--
+    ├───Plane 4
+    │   ├───Object ID: 254
+    │   ├───CRTCs: {0, 1, 2, 3, 4, 5, 6, 7}
+    │   ├───Legacy info
+    │   │   ├───FB ID: 0
+    │   │   └───Formats:
+    │   │       ├───XRGB8888 (0x34325258)
+    │   │       ├───ARGB8888 (0x34325241)
+    │   │       ├───RGBA8888 (0x34324152)
+    │   │       ├───XRGB2101010 (0x30335258)
+    │   │       ├───XBGR2101010 (0x30334258)
+    │   │       ├───ARGB2101010 (0x30335241)
+    │   │       ├───ABGR2101010 (0x30334241)
+    │   │       ├───XRGB16161616 (0x38345258)
+    │   │       ├───XBGR16161616 (0x38344258)
+    │   │       ├───ARGB16161616 (0x38345241)
+    │   │       ├───ABGR16161616 (0x38344241)
+    │   │       ├───XBGR8888 (0x34324258)
+    │   │       ├───ABGR8888 (0x34324241)
+    │   │       ├───RGB565 (0x36314752)
+    │   │       ├───NV12 (0x3231564e)
+--
+    ├───Plane 5
+    │   ├───Object ID: 307
+    │   ├───CRTCs: {0, 1, 2, 3, 4, 5, 6, 7}
+    │   ├───Legacy info
+    │   │   ├───FB ID: 0
+    │   │   └───Formats:
+    │   │       ├───XRGB8888 (0x34325258)
+    │   │       ├───ARGB8888 (0x34325241)
+    │   │       ├───RGBA8888 (0x34324152)
+    │   │       ├───XRGB2101010 (0x30335258)
+    │   │       ├───XBGR2101010 (0x30334258)
+    │   │       ├───ARGB2101010 (0x30335241)
+    │   │       ├───ABGR2101010 (0x30334241)
+    │   │       ├───XRGB16161616 (0x38345258)
+    │   │       ├───XBGR16161616 (0x38344258)
+    │   │       ├───ARGB16161616 (0x38345241)
+    │   │       ├───ABGR16161616 (0x38344241)
+    │   │       ├───XBGR8888 (0x34324258)
+    │   │       ├───ABGR8888 (0x34324241)
+    │   │       ├───RGB565 (0x36314752)
+    │   │       ├───NV12 (0x3231564e)
+--
+    ├───Plane 6
+    │   ├───Object ID: 360
+    │   ├───CRTCs: {0}
+    │   ├───Legacy info
+    │   │   ├───FB ID: 428
+    │   │   │   ├───Object ID: 428
+    │   │   │   ├───Size: 256×256
+    │   │   │   ├───Format: ARGB8888 (0x34325241)
+    │   │   │   ├───Modifier: DRM_FORMAT_MOD_LINEAR (0x0000000000000000)
+    │   │   │   └───Planes:
+    │   │   │       └───Plane 0: offset = 0, pitch = 1024 bytes
+    │   │   └───Formats:
+    │   │       └───ARGB8888 (0x34325241)
+    │   └───Properties
+    │       ├───"type" (immutable): enum {Overlay, Primary, Cursor} = Cursor
+    │       ├───"FB_ID" (atomic): object framebuffer = 428
+    │       │   ├───Object ID: 428
+    │       │   ├───Size: 256×256
+    │       │   ├───Format: ARGB8888 (0x34325241)
+    │       │   ├───Modifier: DRM_FORMAT_MOD_LINEAR (0x0000000000000000)
+    │       │   └───Planes:
+    │       │       └───Plane 0: offset = 0, pitch = 1024 bytes
+    │       ├───"IN_FENCE_FD" (atomic): srange [-1, INT32_MAX] = -1
+    │       ├───"CRTC_ID" (atomic): object CRTC = 363
+    │       ├───"CRTC_X" (atomic): srange [INT32_MIN, INT32_MAX] = 670
+    │       ├───"CRTC_Y" (atomic): srange [INT32_MIN, INT32_MAX] = 1908
+    │       ├───"CRTC_W" (atomic): range [0, INT32_MAX] = 256
+    │       ├───"CRTC_H" (atomic): range [0, INT32_MAX] = 256
+    │       ├───"SRC_X" (atomic): range [0, UINT32_MAX] = 0
+    │       ├───"SRC_Y" (atomic): range [0, UINT32_MAX] = 0
+    │       ├───"SRC_W" (atomic): range [0, UINT32_MAX] = 256
+    │       ├───"SRC_H" (atomic): range [0, UINT32_MAX] = 256
+    │       ├───"IN_FORMATS" (immutable): blob = 361
+    │       │   └───DRM_FORMAT_MOD_LINEAR (0x0000000000000000)
+    │       │       └───ARGB8888 (0x34325241)
+    │       └───"zpos" (immutable): range [UINT8_MAX, UINT8_MAX] = 255
+    ├───Plane 7
+    │   ├───Object ID: 364
+    │   ├───CRTCs: {1}
+    │   ├───Legacy info
+    │   │   ├───FB ID: 0
+    │   │   └───Formats:
+    │   │       └───ARGB8888 (0x34325241)
+    │   └───Properties
+    │       ├───"type" (immutable): enum {Overlay, Primary, Cursor} = Cursor
+    │       ├───"FB_ID" (atomic): object framebuffer = 0
+    │       ├───"IN_FENCE_FD" (atomic): srange [-1, INT32_MAX] = -1
+    │       ├───"CRTC_ID" (atomic): object CRTC = 0
+    │       ├───"CRTC_X" (atomic): srange [INT32_MIN, INT32_MAX] = 0
+    │       ├───"CRTC_Y" (atomic): srange [INT32_MIN, INT32_MAX] = 0
+    │       ├───"CRTC_W" (atomic): range [0, INT32_MAX] = 0
+    │       ├───"CRTC_H" (atomic): range [0, INT32_MAX] = 0
+    │       ├───"SRC_X" (atomic): range [0, UINT32_MAX] = 0
+    │       ├───"SRC_Y" (atomic): range [0, UINT32_MAX] = 0
+    │       ├───"SRC_W" (atomic): range [0, UINT32_MAX] = 0
+    │       ├───"SRC_H" (atomic): range [0, UINT32_MAX] = 0
+    │       ├───"IN_FORMATS" (immutable): blob = 365
+--
+    ├───Plane 8
+    │   ├───Object ID: 368
+    │   ├───CRTCs: {2}
+    │   ├───Legacy info
+    │   │   ├───FB ID: 0
+    │   │   └───Formats:
+    │   │       └───ARGB8888 (0x34325241)
+    │   └───Properties
+    │       ├───"type" (immutable): enum {Overlay, Primary, Cursor} = Cursor
+    │       ├───"FB_ID" (atomic): object framebuffer = 0
+    │       ├───"IN_FENCE_FD" (atomic): srange [-1, INT32_MAX] = -1
+    │       ├───"CRTC_ID" (atomic): object CRTC = 0
+    │       ├───"CRTC_X" (atomic): srange [INT32_MIN, INT32_MAX] = 0
+    │       ├───"CRTC_Y" (atomic): srange [INT32_MIN, INT32_MAX] = 0
+    │       ├───"CRTC_W" (atomic): range [0, INT32_MAX] = 0
+    │       ├───"CRTC_H" (atomic): range [0, INT32_MAX] = 0
+    │       ├───"SRC_X" (atomic): range [0, UINT32_MAX] = 0
+    │       ├───"SRC_Y" (atomic): range [0, UINT32_MAX] = 0
+    │       ├───"SRC_W" (atomic): range [0, UINT32_MAX] = 0
+    │       ├───"SRC_H" (atomic): range [0, UINT32_MAX] = 0
+    │       ├───"IN_FORMATS" (immutable): blob = 369
+--
+    └───Plane 9
+        ├───Object ID: 372
+        ├───CRTCs: {3}
+        ├───Legacy info
+        │   ├───FB ID: 0
+        │   └───Formats:
+        │       └───ARGB8888 (0x34325241)
+        └───Properties
+            ├───"type" (immutable): enum {Overlay, Primary, Cursor} = Cursor
+            ├───"FB_ID" (atomic): object framebuffer = 0
+            ├───"IN_FENCE_FD" (atomic): srange [-1, INT32_MAX] = -1
+            ├───"CRTC_ID" (atomic): object CRTC = 0
+            ├───"CRTC_X" (atomic): srange [INT32_MIN, INT32_MAX] = 0
+            ├───"CRTC_Y" (atomic): srange [INT32_MIN, INT32_MAX] = 0
+            ├───"CRTC_W" (atomic): range [0, INT32_MAX] = 0
+            ├───"CRTC_H" (atomic): range [0, INT32_MAX] = 0
+            ├───"SRC_X" (atomic): range [0, UINT32_MAX] = 0
+            ├───"SRC_Y" (atomic): range [0, UINT32_MAX] = 0
+            ├───"SRC_W" (atomic): range [0, UINT32_MAX] = 0
+            ├───"SRC_H" (atomic): range [0, UINT32_MAX] = 0
+            ├───"IN_FORMATS" (immutable): blob = 373
+[root@archlinux 1]# drm_info | grep -A 20 "crtc"
