@@ -4,41 +4,43 @@
     "type": "split",
     "children": [
       {
-        "id": "4deb9e1e98d31ba2",
+        "id": "8545552fb86167b1",
         "type": "tabs",
+        "dimension": 61.23646209386282,
         "children": [
           {
-            "id": "e730982153d64e7b",
+            "id": "1863d53085c76179",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "drm/drm.md",
+                "file": "drm/drm--kms部分.md",
                 "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "drm"
+              "title": "drm--kms部分"
             }
           }
         ]
       },
       {
-        "id": "5ed4607872024cac",
+        "id": "4ef66a24aa99ecbb",
         "type": "tabs",
+        "dimension": 38.76353790613719,
         "children": [
           {
-            "id": "d97ba90500bc5108",
+            "id": "b86ac45bafa03bb2",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "drm/drm.md",
+                "file": "drm/drm--kms部分.md",
                 "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "drm"
+              "title": "drm--kms部分"
             }
           }
         ]
@@ -98,7 +100,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 319.5
+    "width": 319.5,
+    "collapsed": true
   },
   "right": {
     "id": "ed3e0dedca036b72",
@@ -190,12 +193,22 @@
       "bases:Create new base": false
     }
   },
-  "active": "e730982153d64e7b",
+  "active": "1863d53085c76179",
   "lastOpenFiles": [
+    "drm/pic/display_mode.png",
+    "Untitled 1.canvas",
+    "Untitled.canvas",
+    "drm/drm--kms部分.md",
+    "drm/pic/multi_plane.svg",
+    "drm/pic/gem_create.svg",
+    "drm/pic/one_plane.svg",
+    "drm/pic/gem_alloc.png",
+    "drm/pic/one_plane.png.crswap",
+    "drm/pic/one_plane.png",
+    "drm/pic/plane_type.png.crswap",
+    "drm/pic/plane_type.png",
     "drm/cursor_layer.txt",
     "pic.md",
-    "drm/drm.md",
-    "drm/pic/gem_alloc.png",
     "drm/crtc.md",
     "drm/pic",
     "drm/gem_alloc.png.crswap",
@@ -209,7 +222,6 @@
     "xv6/fs_img_layout.png",
     "Welcome.md",
     "kernel",
-    "archlinux",
-    "xv6"
+    "archlinux"
   ]
 }
