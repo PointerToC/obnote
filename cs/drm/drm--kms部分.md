@@ -491,10 +491,9 @@ vtotal      = vsync_end + vback
 ```
 
 # drm_encoder
-encoder是kms pipeline中的信号转换层。它的上级是crtc，下一级是bridge或者connector。
-**为什么需要有这么一层？**
-将通用的像素和时序与物理显示协议(hdmi,dp,vga)解耦。crtc只负责输出通用的视频信号，encoder负责将通用时序信号转换为对应的协议。
-以输出hdmi信号为例，encoder的作用为：
+encoder是对drm pipeline中的信号转换硬件的抽象。它负责将crtc输出的通用时序信号转换为panel所需要的时序信号。
+在这样的设计下，将两者的功能解耦。crtc只负责输出通用的视频信号，encoder负责将通用时序信号转换为对应的协议。
+以输出hdmi信号为例：
 ```
 CRTC 输出：  
 Pixel stream (RGB/YUV)  
@@ -508,6 +507,10 @@ HDMI Encoder：
 2. TMDS 编码（8b/10b-like）  
 3. 串行化（Serializer）  
 4. 差分输出（TMDS lanes）
+
+↓  
+
+panel
 ```
 **源码结构体**
 ```
@@ -529,8 +532,8 @@ struct drm_encoder {
 	struct dentry *debugfs_entry;
 };
 ```
-**struct drm_encoder_helper_funcs \*helper_private**
-以rk3588为例，在驱动注册时候会根据encoder的能力集，注册对应的回调函数
+**关注重点：struct drm_encoder_helper_funcs \*helper_private**
+以rk3588为例，在驱动注册时候会根据硬件的能力集，注册对应的回调函数
 ```
 rockchip_drm_init()
 	rockchip_dp_probe()
@@ -565,15 +568,13 @@ rockchip_dp_drm_encoder_mode_valid(struct drm_encoder *encoder,
 	return MODE_OK;
 }
 ```
-其中mode_valid回调函数显示：当前edp模块不支持front porch/back porch为0的时序。因此，当tcon端需要front porch/back porch为0的时序时，kms pipeline会在这里停止而导致输出中止，从而出现老化屏的现象。
-目前drm的趋势，encoder的分量在减小而原本属于可选组件的bridge的分量在不断增加。
+其中mode_valid回调函数显示：当前edp模块不支持front porch/back porch为0的时序。因此，当tcon端需要front porch/back porch为0的时序时，drm pipeline会在这里停止而导致输出中止，从而出现老化屏的现象。
+
+在arm soc架构中，不需要太多关注encoder这一层。原因在bridge章节中叙述。
+
 # drm_bridge
-在drm最初的设计中，drm_bridge是drm pipeline中非必要的组件，属于可选的一部分。但是目前的趋势是，bridge逐渐替代了encoder的作用，encoder变成了一个crtc和bridge之间的路由。
-**bridge的本质**
-是一种将视频信号转换成另外一种视频信号的硬件模块，位于encoder和最终显示设备之间，可以无限级联。如：
-```
-CRTC → DSI encoder → (DSI->LVDS)bridge → ... → panel
-```
+是一种将视频信号转换成另外一种视频信号的硬件模块，位于encoder和最终显示设备之间，可以无限级联。
+
 结构体源码
 ```
 struct drm_bridge {
@@ -602,16 +603,74 @@ struct drm_bridge {
 	void (*hpd_cb)(void *data, enum drm_connector_status status);
 	void *hpd_data;
 };
-
 ```
-## 为什么说bridge的作用在被不断强化？
+## 不同显示架构下，bridge和encoder的差异
+bridge和encoder在硬件上都属于信号转换器。在amd gpu的架构中，drm_bridge是drm pipeline中非必要的组件，属于可选的一部分。在arm soc中，encoder 是“CRTC → 输出接口类型”的抽象锚点；bridge 是“信号链上的具体变换模块”，bridge为必带的组件。
+
+以输出hdmi信号为例：
+amd gpu的drm pipeline为：
+```
+crtc->encoder->connector->panel
+```
+rk3588的drm pipeline为：
+```
+crtc->encoder->bridge(synopsys)->connector->panel
+```
+**同样的将标准时序信号转换为hdmi信号，为什么在amd gpu中这个实际转换者为encoder,而在rk3588中，这个实际转换者为bridge?**
+pc领域的gpu从设计之初就是高集成度的单体架构。但是在arm soc架构中，这些信号转换硬件都是第三方的ip核，为了降低代码耦合，便将这部分的工作移到了bridge。
+
+## encoder只是crtc和bridge之间的路由，bridge才是核心逻辑载体
 以rk3588为例，hdmitx和dp/edp中对应的driver controller在drm pipeline中被封装成drm_bridge而不是drm_encoder。
 ### edp
 源码位置
 ```
 kernel/drivers/gpu/drm/bridge/analogix/*
 ```
+驱动probe:
+```
+rockchip_dp_probe():dp->adp = analogix_dp_probe()
+	analogix_dp_prove():dp->bridge.funcs = &analogix_dp_bridge_funcs
+```
+edp controller核心回调函数全部在analogix_dp_bridge_funcs结构体中，比如atomic_enable函数，edp的链路训练，协商，信号输出都封装在这个回调函数中。
+不同tx驱动的在这个回调函数结构体中实现自己的核心控制逻辑，然后将bridge连接到drm pipeline中。
+```
+static const struct drm_bridge_funcs analogix_dp_bridge_funcs = {
+	.atomic_duplicate_state = drm_atomic_helper_bridge_duplicate_state,
+	.atomic_destroy_state = drm_atomic_helper_bridge_destroy_state,
+	.atomic_reset = drm_atomic_helper_bridge_reset,
+	.atomic_pre_enable = analogix_dp_bridge_atomic_pre_enable,
+	.atomic_enable = analogix_dp_bridge_atomic_enable,
+	.atomic_disable = analogix_dp_bridge_atomic_disable,
+	.atomic_post_disable = analogix_dp_bridge_atomic_post_disable,
+	.attach = analogix_dp_bridge_attach,
+	.detach = analogix_dp_bridge_detach,
+	.mode_valid = analogix_dp_bridge_mode_valid,
+};
+```
+### edp的bridge又是怎么加入到drm pipeline中的？
+rk drm是个聚合驱动，先probe各个子组件，待所有组件资源准备好之后，统一调用各个子组件注册的bind回调函数，在bind函数中将bridge,encoder,connector绑定到drm pipeline中
+```
+rockchip_dp_bind()
+|	rockchip_dp_drm_create_encoder(dp);
+|	analogic_dp_bind(dp->adp, drm_dev);
+|--> analogix_dp_bind(dp->adp, drm_dev)
+     |-->analogix_dp_bridge_init()
+		|-->drm_bridge_attach()
+			|	bridge->dev = encoder->dev; //绑定bridge和encoder
+			|	bridge->encoder = encoder;
+			|-->bridge->funcs->attach(bridge, flags)
+					// 初始化connector
+					ret = drm_connector_init(dp->drm_dev, connector,
+					 &analogix_dp_connector_funcs,
+					 connector_type);
+					 drm_connector_helper_add(connector,
+					 &analogix_dp_connector_helper_funcs);
+					 // 绑定connector和encoder
+					 drm_connector_attach_encoder(connector, encoder);
+					 // 绑定connector和bridge
+					 ret = dp->plat_data->attach(dp->plat_data, bridge, connector);
+```
+详细阅读下rockchip_dp_drm_create_encoder()和analogix_dp_bridge_attach()这个两个函数可以加深理解rk drm中encoder和bridge的区别。
 
-
-
-
+hdmitx的probe,bind,attach逻辑结构和上述一致。
+# drm_connector
