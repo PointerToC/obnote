@@ -6,7 +6,7 @@
       {
         "id": "4ef66a24aa99ecbb",
         "type": "tabs",
-        "dimension": 60.514440433213004,
+        "dimension": 67.50902527075813,
         "children": [
           {
             "id": "b86ac45bafa03bb2",
@@ -27,7 +27,7 @@
       {
         "id": "b9310f1b44fa3233",
         "type": "tabs",
-        "dimension": 39.485559566787,
+        "dimension": 32.49097472924188,
         "children": [
           {
             "id": "7343480f1e854e6b",
@@ -193,7 +193,7 @@
       "bases:Create new base": false
     }
   },
-  "active": "7343480f1e854e6b",
+  "active": "b86ac45bafa03bb2",
   "lastOpenFiles": [
     "drm/pic/display_mode.png",
     "Untitled 1.canvas",

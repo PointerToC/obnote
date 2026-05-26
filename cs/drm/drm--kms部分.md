@@ -674,3 +674,220 @@ rockchip_dp_bind()
 
 hdmitx的probe,bind,attach逻辑结构和上述一致。
 # drm_connector
+drm_connector是对物理显示接口的抽象。
+
+结构体源码
+```
+struct drm_connector {
+	struct drm_device *dev;
+	struct device *kdev;
+	struct device_attribute *attr;
+	struct list_head head;
+	struct drm_mode_object base;
+	char *name;
+	struct mutex mutex;
+	unsigned index;
+	int connector_type;
+	int connector_type_id;
+	bool interlace_allowed;
+	bool doublescan_allowed;
+	bool stereo_allowed;
+	bool ycbcr_420_allowed;
+	enum drm_connector_registration_state registration_state;
+	struct list_head modes;
+	enum drm_connector_status status;
+	struct list_head probed_modes;
+	struct drm_display_info display_info;
+	const struct drm_connector_funcs *funcs;
+	struct drm_property_blob *edid_blob_ptr;
+	struct drm_object_properties properties;
+	struct drm_property *scaling_mode_property;
+	struct drm_property *vrr_capable_property;
+	struct drm_property *colorspace_property;
+	struct drm_property_blob *path_blob_ptr;
+	struct drm_property *max_bpc_property;
+
+#define DRM_CONNECTOR_POLL_HPD (1 << 0)
+#define DRM_CONNECTOR_POLL_CONNECT (1 << 1)
+#define DRM_CONNECTOR_POLL_DISCONNECT (1 << 2)
+
+	uint8_t polled;
+	int dpms;
+	const struct drm_connector_helper_funcs *helper_private;
+	struct drm_cmdline_mode cmdline_mode;
+	enum drm_connector_force force;
+	bool override_edid;
+	u64 epoch_counter;
+	u32 possible_encoders;
+	struct drm_encoder *encoder;
+
+#define MAX_ELD_BYTES	128
+
+	uint8_t eld[MAX_ELD_BYTES];
+	bool latency_present[2];
+	int video_latency[2];
+	int audio_latency[2];
+	struct i2c_adapter *ddc;
+	int null_edid_counter;
+	unsigned bad_edid_counter;
+	bool edid_corrupt;
+	u8 real_edid_checksum;
+	struct dentry *debugfs_entry;
+	struct drm_connector_state *state;
+	struct drm_property_blob *tile_blob_ptr;
+	bool has_tile;
+	struct drm_tile_group *tile_group;
+	bool tile_is_single_monitor;
+	uint8_t num_h_tile, num_v_tile;
+	uint8_t tile_h_loc, tile_v_loc;
+	uint16_t tile_h_size, tile_v_size;
+	struct llist_node free_node;
+	struct hdr_sink_metadata hdr_sink_metadata;
+};
+
+```
+## 连接状态的改变与热插拔监测
+```
+enum drm_connector_status {
+	connector_status_connected = 1,
+	connector_status_disconnected = 2,
+	connector_status_unknown = 3,
+};
+
+enum drm_connector_status status;
+```
+status表示当前物理接口和panel的连接状态，正常情况下，当我们在shell输入：
+```
+cat /sys/class/drm/card1-DP-1/status
+```
+查询当前panel和connector之间的状态的时候，查询的就是这个值
+**也可以通过修改这个值的状态来打开和关闭整个显示链路**
+```
+echo on > /sys/class/drm/card1-DP-1/status
+echo off > /sys/class/drm/card1-DP-1/status
+```
+### 主动打开显示链路的逻辑：
+核心函数
+```
+kernel/drivers/gpu/drm/drm_sysfs.c
+
+static ssize_t status_store(struct device *device,
+			   struct device_attribute *attr,
+			   const char *buf, size_t count)
+{
+	...
+	if (sysfs_streq(buf, "detect"))
+		connector->force = 0;
+	else if (sysfs_streq(buf, "on"))
+		connector->force = DRM_FORCE_ON;
+	else if (sysfs_streq(buf, "on-digital"))
+		connector->force = DRM_FORCE_ON_DIGITAL;
+	else if (sysfs_streq(buf, "off"))
+		connector->force = DRM_FORCE_OFF;
+	else
+		ret = -EINVAL;
+
+	if (old_force != connector->force || !connector->force) {
+		DRM_DEBUG_KMS("[CONNECTOR:%d:%s] force updated from %d to %d or reprobing\n",
+			      connector->base.id,
+			      connector->name,
+			      old_force, connector->force);
+
+		connector->funcs->fill_modes(connector,
+					     dev->mode_config.max_width,
+					     dev->mode_config.max_height);
+	}
+	...
+}
+```
+
+`fill_modes`回调，绝大部分厂商用的都是drm框架自带的`drm_helper_probe_connector_modes`函数。
+函数的大致逻辑如下：
+```
+kernel/drivers/gpu/drm/drm_probe_helper.c
+
+int drm_helper_probe_single_connector_modes(struct drm_connector *connector,
+					    uint32_t maxX, uint32_t maxY)
+{
+	...
+	
+	// 当echo on时，这里直接强制修改状态，不走硬件探测
+	// 这里的force和drm_helper_probe_detect函数都会执行厂商自定的回调
+	if (connector->force) {
+		if (connector->force == DRM_FORCE_ON ||
+		    connector->force == DRM_FORCE_ON_DIGITAL)
+			connector->status = connector_status_connected;
+		else
+			connector->status = connector_status_disconnected;
+		if (connector->funcs->force)
+			connector->funcs->force(connector);
+	} else {
+		ret = drm_helper_probe_detect(connector, &ctx, true);
+
+		if (ret == -EDEADLK) {
+			drm_modeset_backoff(&ctx);
+			goto retry;
+		} else if (WARN(ret < 0, "Invalid return value %i for connector detection\n", ret))
+			ret = connector_status_unknown;
+
+		connector->status = ret;
+	}
+
+	// 如果当前状态和之前的状态不一样，在这里会唤醒一个异步任务output_poll_work，该异步任务会执行drm_kms_helper_hotplug_event来通知用户层连接状态的改变
+	
+	if (old_status != connector->status) {
+		dev->mode_config.delayed_event = true;
+		if (dev->mode_config.poll_enabled)
+			mod_delayed_work(system_wq,
+					 &dev->mode_config.output_poll_work,
+					 0);
+	}
+	
+	...
+	
+	// 读edid逻辑，执行厂商自定的get_modes回调
+	count = (*connector_funcs->get_modes)(connector);
+	
+	...
+	
+	// 模式合法校验,在这里会执行所有组件在bind阶段注册的mode_valid回调
+	list_for_each_entry(mode, &connector->modes, head) {
+		if (mode->status != MODE_OK)
+			continue;
+
+		mode->status = drm_mode_validate_driver(dev, mode);
+		if (mode->status != MODE_OK)
+			continue;
+
+		mode->status = drm_mode_validate_size(mode, maxX, maxY);
+		if (mode->status != MODE_OK)
+			continue;
+
+		mode->status = drm_mode_validate_flag(mode, mode_flags);
+		if (mode->status != MODE_OK)
+			continue;
+			
+		ret = drm_mode_validate_pipeline(mode, connector, &ctx,
+						 &mode->status);
+						 
+		if (mode->status != MODE_OK)
+			continue;
+		mode->status = drm_mode_validate_ycbcr420(mode, connector);
+	}
+
+prune:
+
+	...
+		
+	// 模式排序，选出prefered mode
+	drm_mode_sort(&connector->modes);
+
+	list_for_each_entry(mode, &connector->modes, head) {
+		drm_mode_set_crtcinfo(mode, CRTC_INTERLACE_HALVE_V);
+		// 输出所有合法的mode
+		drm_mode_debug_printmodeline(mode);
+	}
+
+	return count;
+}
+```
