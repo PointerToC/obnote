@@ -746,17 +746,8 @@ struct drm_connector {
 };
 
 ```
-## 连接状态的改变与热插拔监测
-```
-enum drm_connector_status {
-	connector_status_connected = 1,
-	connector_status_disconnected = 2,
-	connector_status_unknown = 3,
-};
-
-enum drm_connector_status status;
-```
-status表示当前物理接口和panel的连接状态，正常情况下，当我们在shell输入：
+## 连接状态和热插拔
+`enum drm_connector_status status`表示当前物理接口和panel的连接状态，正常情况下，当我们在shell输入：
 ```
 cat /sys/class/drm/card1-DP-1/status
 ```
@@ -766,7 +757,7 @@ cat /sys/class/drm/card1-DP-1/status
 echo on > /sys/class/drm/card1-DP-1/status
 echo off > /sys/class/drm/card1-DP-1/status
 ```
-### 主动打开显示链路的逻辑：
+### 主动打开连接状态的逻辑
 核心函数
 ```
 kernel/drivers/gpu/drm/drm_sysfs.c
@@ -891,3 +882,31 @@ prune:
 	return count;
 }
 ```
+### 软件热插拔
+存在一些使用场景，connector和panel之间没有hpd检测信号，那么在这种情况下connector是怎么向用户空间上报热插拔事件的？
+```
+// 通过上面提到的output_poll_work异步回调
+
+// 回调注册
+rockchip_drm_bind()
+|-->drm_kms_helper_poll_init()
+   	INIT_DELAYED_WORK(&dev->mode_config.output_poll_work, output_poll_execute);
+   	
+// kernel/gpu/drm/drm_probe_helper.c
+output_poll_execute()
+|-->drm_kms_helper_hotplug_event()
+	|-->drm_sysfs_hotplug_event(dev)
+		char *event_string = "HOTPLUG=1";
+		char *envp[] = { event_string, NULL };
+		kobject_uevent_env(&dev->primary->kdev->kobj, KOBJ_CHANGE, envp);
+```
+### 硬件热插拔
+以rk3588 hdmi为例，由驱动probe时注册的处理函数生成
+```
+rockchip_hdmi_irq()
+|-->hdmi->work
+	|-->repo_hpd_event()
+		|-->drm_helper_hpd_irq_event()
+			|-->drm_kms_helper_hotplug_event()
+```
+无论是那种热插拔，都是通过drm_kms_helper_hotplug_event()函数向用户空间上报udev信号
